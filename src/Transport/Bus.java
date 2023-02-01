@@ -54,7 +54,16 @@ public class Bus extends Transport<License_D> {
 
         @Override
         public String toString() {
-            return super.toString()+ " : " +getMin()+ " — " +getMax() + " мест.";
+            return super.toString() + " : " + getMin() + " — " + getMax() + " мест.";
+        }
+    }
+
+    @Override
+    public void passDiagnostics() throws TransportTypeException {
+        if (getCapacity() != null) {
+            System.out.println("«Автобусы» диагностику проходить не должны.");
+        } else {
+            throw new TransportTypeException();
         }
     }
 
@@ -66,7 +75,6 @@ public class Bus extends Transport<License_D> {
             System.out.println("Данных по транспортному средству недостаточно");
         }
     }
-
 
     public void startMoving() {
         System.out.println("Транспортное средство " + getMark() + " " + getModel() + " начало движение.");

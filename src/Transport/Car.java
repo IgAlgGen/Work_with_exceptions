@@ -72,6 +72,15 @@ public class Car extends Transport<License_B> {
     }
 
     @Override
+    public void passDiagnostics() throws TransportTypeException {
+        if (getBodyType() != null) {
+            super.passDiagnostics();
+        } else {
+            throw new TransportTypeException();
+        }
+    }
+
+    @Override
     public void printType() {
         if (bodyType != null) {
             System.out.println(bodyType.toString());

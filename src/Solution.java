@@ -4,7 +4,7 @@ import Drivers.License_D;
 import Transport.Bus;
 import Transport.Car;
 import Transport.Track;
-import Transport.Transport;
+import Transport.*;
 
 
 public class Solution {
@@ -13,7 +13,7 @@ public class Solution {
                 "Lada",
                 "Kalina",
                 1.6,
-                " Седан",
+                "Седан",
                 new License_B(
                         "Ivan Ivanov",
                         true,
@@ -47,9 +47,22 @@ public class Solution {
         bus1.printType();
         track1.printType();
 
+        checkDiagnosticOfTransport(car1);
+        checkDiagnosticOfTransport(track1);
+        checkDiagnosticOfTransport(bus1);
+
+
     }
 
     public static void printSolution(Transport<?> transport) {
         System.out.println("Водитель " + transport.getDriverInfo() + ", управляет автомобилем " + transport + " и будет участвовать в заезде.");
+    }
+
+    public static void checkDiagnosticOfTransport(Transport<?> transport) {
+            try {
+                transport.passDiagnostics();
+            }catch (TransportTypeException e){
+                System.out.println("Транспортное средство не опознано и не должно проходить диагностику.");
+            }
     }
 }
