@@ -47,9 +47,9 @@ public class Solution {
         bus1.printType();
         track1.printType();
 
-        checkDiagnosticOfTransport(car1);
-        checkDiagnosticOfTransport(track1);
-        checkDiagnosticOfTransport(bus1);
+        passDiagnostics(car1);
+        passDiagnostics(track1);
+        passDiagnostics(bus1);
 
 
     }
@@ -58,7 +58,7 @@ public class Solution {
         System.out.println("Водитель " + transport.getDriverInfo() + ", управляет автомобилем " + transport + " и будет участвовать в заезде.");
     }
 
-    public static void checkDiagnosticOfTransport(Transport<?> transport) {
+    public static void passDiagnostics(Transport<?> transport) {
             try {
                 transport.passDiagnostics();
             }catch (TransportTypeException e){
@@ -66,3 +66,4 @@ public class Solution {
             }
     }
 }
+
