@@ -50,39 +50,48 @@ public class Track extends Transport<License_C> {
 
         @Override
         public String toString() {
-            return super.toString()+" : от " + getMin() + " тонн до " + getMax() + " тонн.";
+            return super.toString() + " : от " + getMin() + " тонн до " + getMax() + " тонн.";
         }
     }
 
     @Override
-    public void printType() {
-        if (typeOfLoad != null) {
-            System.out.println(typeOfLoad.toString());
+    public void passDiagnostics() throws TransportTypeException {
+        if (getTypeOfLoad() != null) {
+            super.passDiagnostics();
         } else {
-            System.out.println("Данных по транспортному средству недостаточно");
+            throw new TransportTypeException();
         }
     }
 
-    public void startMoving() {
-        System.out.println("Транспортное средство " + getMark() + " " + getModel() + " начало движение.");
-    }
+        @Override
+        public void printType () {
+            if (typeOfLoad != null) {
+                System.out.println(typeOfLoad.toString());
+            } else {
+                System.out.println("Данных по транспортному средству недостаточно");
+            }
+        }
 
-    public void finishMoving() {
-        System.out.println("Транспортное средство " + getMark() + " " + getModel() + " закончило движение.");
-    }
+        public void startMoving () {
+            System.out.println("Транспортное средство " + getMark() + " " + getModel() + " начало движение.");
+        }
 
-    @Override
-    public void pitStop() {
-        System.out.println("Время пит-стоп ");
-    }
+        public void finishMoving () {
+            System.out.println("Транспортное средство " + getMark() + " " + getModel() + " закончило движение.");
+        }
 
-    @Override
-    public void bestTimeLap() {
-        System.out.println("Лучший круг ");
-    }
+        @Override
+        public void pitStop () {
+            System.out.println("Время пит-стоп ");
+        }
 
-    @Override
-    public void maxSpeed() {
-        System.out.println("Максимальная скорость ");
+        @Override
+        public void bestTimeLap () {
+            System.out.println("Лучший круг ");
+        }
+
+        @Override
+        public void maxSpeed () {
+            System.out.println("Максимальная скорость ");
+        }
     }
-}

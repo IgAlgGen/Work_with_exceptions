@@ -27,6 +27,12 @@ public abstract class Transport<T extends DriverInfo> implements Emulous {
 
     }
 
+
+    public void passDiagnostics() {
+        System.out.println("Транспортное средство " + mark + " " + model + " прошло диагностику");
+    }
+
+
     public void setDriverInfo(T driverInfo) {
         this.driverInfo = driverInfo;
     }
